@@ -1,0 +1,16 @@
+<h4>ユーザー　詳細</h4>
+<div>
+  <h3><%= @user.name %></h3>
+  <%= image_tag @user.get_profile_image %>
+  <%= link_to "編集", edit_user_registration_path %>
+</div>
+
+<% @books.each do |book| %>
+<div>
+  <%= link_to book_path(book.id) do %>
+    <%= image_tag book.get_image %>
+  <% end %>
+  <p>ショップ名：<%= book.title %></p>
+  <p>説明：<%= book.body%></p>
+</div>
+<% end %>
