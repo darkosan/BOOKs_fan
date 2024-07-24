@@ -2,7 +2,7 @@
 <div>
   <h3><%= @user.name %></h3>
   <%= image_tag @user.get_profile_image %>
-  <%= link_to "編集", edit_user_registration_path %>
+  <%= link_to "プロフィール編集", edit_user_registration_path %>
 </div>
 
 <% @books.each do |book| %>
@@ -10,7 +10,7 @@
   <%= link_to book_path(book.id) do %>
     <%= image_tag book.get_image %>
   <% end %>
-  <p>ショップ名：<%= book.title %></p>
-  <p>説明：<%= book.body%></p>
+  <p>タイトル：<%= book.title %></p>
+  <p>内容：<%= book.body%></p>
 </div>
 <% end %>
