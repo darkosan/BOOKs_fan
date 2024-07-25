@@ -1,10 +1,11 @@
-<h1>投稿一覧</h1>
+<h1>BOOK 一覧</h1>
 <% @books.each do |book| %>
   <div>
-    <%= image_tag book.get_image %>
+    <%= link_to book_path(book.id) do %>
+      <%= image_tag book.get_image %>
+    <% end %>
     <p>タイトル：<%= book.title %></p>
-    <p>説明：<%= book.body %></p>
-    <p>ユーザーネーム：<%= book.user.name %></p>
-    <p>投稿ユーザー画像：<%= image_tag 'no_user.jpg' %></p>
+    <p>内容：<%= book.body %></p>
+    <p>投稿者：<%= book.user.name %><%= image_tag 'no_user.jpg' %></p>
   </div>
 <% end %>
