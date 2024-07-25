@@ -1,35 +1,49 @@
-<h2>新規登録</h2>
-<%= form_with model: @user, url: user_registration_path do |f| %>
-<%= render "devise/shared/error_messages", resource: resource %>
+<!DOCTYPE html>
+<div class="text-center">
+  <br />
+  <h1>新規登録</h1>
+  <br />
+</div>
 
-<br />
+<div class="border border-primary rounded" style="padding:10px;">
+  <%= form_with model: @user, url: user_registration_path do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <br />
+  <h2>必要情報を入力してください</h2>
+  <br />
+  <div class="row">
+    <div class="col-md">
+      <div class="field">
+        <%= f.label "名前" %><br />
+        <%= f.text_field :name %>
+      </div>
 
-  <div class="field">
-    <%= f.label "名前" %><br />
-    <%= f.text_field :name %>
+      <div class="field">
+        <%= f.label "メールアドレス" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <%= f.label "パスワード" %>
+        <% if @minimum_password_length %>
+       <em>(<%= @minimum_password_length %> 文字)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+ 　    </div>
+
+      <div class="field">
+        <%= f.label "確認のため、もう一度ご入力ください" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <br />
+      <div class="text-right">
+        <div class="actions">
+          <%= f.submit "登録" %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label "パスワード" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label "確認のため、もう一度ご入力ください" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "登録" %>
-  </div>
-<% end %>
-
+  <% end %>
+</div>
 <%= render "devise/shared/links" %>
