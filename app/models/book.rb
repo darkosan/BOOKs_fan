@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-  
+
   belongs_to :user
   has_one_attached :image
 
@@ -8,7 +8,7 @@ class Book < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_book.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    image
+    image.variant(resize_to_limit: [300, 300]).processed
   end
 
 end

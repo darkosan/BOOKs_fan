@@ -1,4 +1,9 @@
-<h1>新規投稿</h1>
+<div class="text-center">
+  <br />
+  <h1>新規投稿</h1>
+  <br />
+</div>
+
 <%= form_with model: @book do |f| %>
   <h4>BOOK画像</h4>
   <%= f.file_field :image, accept: "image/*" %>
