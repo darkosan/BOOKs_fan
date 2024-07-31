@@ -1,13 +1,21 @@
-<h1>BOOK 詳細</h1>
-<div>
-  <%= image_tag @book.get_image %>
-  <p>タイトル：<%= @book.title %></p>
-  <p>内容：<%= @book.body %></p>
-  <p>ユーザーネーム：<%= @book.user.name %><%= image_tag 'no_user.jpg' %></p>
-  <p>投稿日：<%= @book.created_at.strftime('%Y/%m/%d') %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="my-3 text-center">BOOK 詳細</h1>
 
-  <% if @book.user == current_user %>
-    <%= link_to "編集", edit_book_path(@book) %>  |
-    <%= link_to "削除", book_path(@book), method: :delete %>
-  <% end %>
+      <%= image_tag @book.get_image %>
+        <div>
+          <p>タイトル：<%= @book.title %></p>
+          <p>内容：<%= @book.body %></p>
+          <p>投稿者：<%= @book.user.name %><%= image_tag @book.user.get_profile_image %></p>
+          <p>投稿日：<%= @book.created_at.strftime('%Y/%m/%d') %></p>
+        
+          <% if @book.user == current_user %>
+            <%= link_to "編集", edit_book_path(@book) %>  |
+            <%= link_to "削除", book_path(@book), method: :delete %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

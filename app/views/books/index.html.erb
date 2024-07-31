@@ -1,11 +1,19 @@
-<h1>BOOK 一覧</h1>
-<% @books.each do |book| %>
-  <div>
-    <%= link_to book_path(book.id) do %>
-      <%= image_tag book.get_image %>
-    <% end %>
-    <p>タイトル：<%= book.title %></p>
-    <p>内容：<%= book.body %></p>
-    <p>投稿者：<%= book.user.name %><%= image_tag 'no_user.jpg' %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="my-3 text-center">BOOK 一覧</h1>
+
+        <% @books.each do |book| %>
+          <div class="row">
+            <%= link_to book_path(book.id) do %>
+              <%= image_tag book.get_image %>
+            <% end %>
+            <p>タイトル：<%= book.title %></p>
+            <p>内容：<%= book.body %></p>
+            <p>投稿者：<%= book.user.name %><%= image_tag book.user.get_profile_image %></p>
+          </div>
+        <% end %>
+    </div>
   </div>
-<% end %>
+</div>
+

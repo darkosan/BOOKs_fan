@@ -1,17 +1,21 @@
-<h1>BOOK 編集</h1>
-<%= form_with model: @book do |f| %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="my-3 text-center">BOOK 編集</h1>
 
-  <h4>BOOK画像</h4>
-  <%= f.file_field :image, accept: "image/*" %>
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
-  <h4>内容</h4>
-  <%= f.text_area :body %>
-
-<br />
-
-  <%= f.submit "変更を保存" %><br />
-  <%= link_to "詳細へ戻る", book_path(@book.id) %><br />
-  <%= link_to "Book　一覧", books_path %>
-
-<% end %>
+      <%= form_with model: @book do |f| %>
+        <h4>BOOK画像</h4>
+          <%= f.file_field :image, accept: "image/*" %>
+        <h4>タイトル</h4>
+          <%= f.text_field :title %>
+        <h4>内容</h4>
+          <%= f.text_area :body %>
+        <div class="my-3 text-center">
+          <%= f.submit "変更を保存" %>
+        </div>
+        <%= link_to "戻る", :back %>  |
+        <%= link_to "一覧", books_path %>
+      <% end %>
+    </div>
+  </div>
+</div>
