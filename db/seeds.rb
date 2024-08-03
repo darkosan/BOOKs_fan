@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "seedの実行を開始"
+
 seika = User.find_or_create_by!(email: "seika@example.com") do |user|
   user.name = "Seika"
   user.password = "password"
@@ -47,3 +49,5 @@ Book.find_or_create_by!(title: "聖書") do |book|
   聖書は現在、世界で最も読まれている本となっている。'
   book.user = mira
 end
+
+puts "seedの実行が完了"

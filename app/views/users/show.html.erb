@@ -10,7 +10,7 @@
 </div>
 
 <% @books.each do |book| %>
-<div>
+<div class="row border border-primary-dark mb-5">
   <%= link_to book_path(book.id) do %>
     <%= image_tag book.get_image %>
   <% end %>
