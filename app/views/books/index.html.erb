@@ -2,16 +2,16 @@
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <h1 class="my-4 text-center">BOOK 一覧</h1>
-          <% @books.each do |book| %>
-            <div class="row border border-primary-dark mb-5">
-              <%= link_to book_path(book.id) do %>
-                <%= image_tag book.get_image %>
-              <% end %>
-              <p>タイトル：<%= book.title %></p>
-              <p>内容：<%= book.body %></p>
-              <p>投稿者：<%= book.user.name %><%= image_tag book.user.get_profile_image %></p>
-            </div>
+      <% @books.each do |book| %>
+        <div class="row border border-primary-dark mb-5">
+          <%= link_to book_path(book.id) do %>
+            <%= image_tag book.get_image %>
           <% end %>
+          <p>タイトル：<%= book.title %></p>
+          <p>内容：<%= simple_format(book.body) %></p>
+          <p>投稿者：<%= book.user.name %><%= image_tag book.user.get_profile_image %></p>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

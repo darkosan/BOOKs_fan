@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        book:
+          attributes:
+            title:
+              blank: "が空白です"
+            body:
+              blank: "が空白です"
