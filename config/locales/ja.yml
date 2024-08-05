@@ -5,3 +5,21 @@ ja:
         image: 画像
         title: タイトル(著者)
         body: 本文
+      user:
+        email: メールアドレス
+        current_password: 現在のパスワード
+        
+    errors:
+      models:
+        book:
+          attributes:
+            title:
+              blank: "が空白です"
+            body:
+              blank: "が空白です"
+        user:
+          attributes:
+            email:
+              blank: "が空白です"
+            current_password:
+              blank: "が空白です"
