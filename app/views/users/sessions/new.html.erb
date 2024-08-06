@@ -6,6 +6,16 @@
         <%= form_with model: @user, url: user_session_path do |f| %>
 
           <h4 class="my-3 text-center">必要情報を入力してください</h4>
+          
+          <% if @user.errors.any? %>
+            <%= @user.errors.count %>件のエラーが発生しました
+            <ul>
+              <% @ser.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>
+          
           <div class="row">
             <div class="col-md">
               <div class="field">

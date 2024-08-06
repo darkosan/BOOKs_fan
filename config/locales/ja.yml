@@ -7,8 +7,9 @@ ja:
         body: 本文
       user:
         email: メールアドレス
+        password: パスワード
         current_password: 現在のパスワード
-        
+
     errors:
       models:
         book:
@@ -22,4 +23,6 @@ ja:
             email:
               blank: "が空白です"
             current_password:
+              blank: "が空白です"
+            password:
               blank: "が空白です"
