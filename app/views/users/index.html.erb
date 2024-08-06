@@ -1,9 +1,17 @@
-<h1>User 一覧</h1>
-<% @users.each do |user| %>
-  <div>
-    <%= link_to user_path(user.id) do %>
-      <%= image_tag user.get_profile_image %>
-    <% end %>
-    <p>投稿者：<%= user.name %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="my-4 text-center">User 一覧</h1>
+
+      <% @users.each do |user| %>
+        <div>
+          <%= link_to user_path(user.id) do %>
+            <%= image_tag user.get_profile_image %>
+          <% end %>
+          <p>投稿者：<%= user.name %></p>
+        </div>
+      <% end %>
+
+    </div>
   </div>
-<% end %>
+</div>
