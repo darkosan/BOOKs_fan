@@ -1,0 +1,8 @@
+<h1>全BOOK一覧</h1>
+<ul>
+  <% @books.each do |book| %>
+    <li>
+      <%= book.title%> - <%= book.body%>
+    </li>
+  <% end %>
+</ul>

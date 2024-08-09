@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Admin - BOOKsFan</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
+  <head>
+    <title>BOOKsFan</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <script src="https://kit.fontawesome.com/da38fec662.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
@@ -19,8 +23,11 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
                 <% if admin_signed_in? %>
+     　            <li class="nav-item">
+                    <%= link_to '全BOOK一覧', admin_book_dashboards_path, class: 'nav-link text-dark' %>
+                  </li>
                   <li class="nav-item">
-                    <%= link_to '全User一覧', admin_dashboards_path, class: 'nav-link text-dark' %>
+                    <%= link_to '全User一覧', admin_user_dashboards_path, class: 'nav-link text-dark' %>
                   </li>
                   <li class="nav-item">
                     <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
@@ -30,6 +37,30 @@
         </div>
       </nav>
     </header>
-  <%= yield %>
+
+    <main class="mb-auto">
+      <%= yield %>
+    </main>
+
+    <footer class="bg-secondary text-white pt-5 pb-4">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <p>BOOKs Fan </p>
+          </div>
+          <div class="col-md-8">
+            <ul class="text-white mt-2 mb-3 p-0 list-unstyled">
+              <li>
+                <a href="/homes/about"  class="text-dark-50">アプリケーション説明</a>
+              </li>
+              <li>
+                <a href="/users/sign_in"  class="text-dark-50">User用</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
 </body>
+
 </html>

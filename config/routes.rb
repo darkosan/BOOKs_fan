@@ -10,8 +10,11 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    get 'dashboards', to: 'dashboards#index'
-    resources :users, only: [:destroy]
+    get 'user_dashboards', to: 'user_dashboards#index'
+    resources :user_dashboards, only: [:destroy]
+
+    get 'book_dashboards', to: 'book_dashboards#index'
+    resources :book_dashboards, only: [:destroy]
   end
 
   get 'users/:id/profile', to: 'users#show', as: 'user_profile'

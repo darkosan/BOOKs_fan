@@ -4,6 +4,7 @@
       <h1 class="text-center">ログイン(管理者用)</h2>
       <div class="border border-primary">
         <%= form_with model: @admin, url: session_path(resource_name), local: true do |f| %>
+          <%= render "admin/shared/error_messages", model: f.object %>
 
           <div class="row">
             <div class="col-md">

@@ -1,9 +1,9 @@
-class Admin::DashboardsController < ApplicationController
+class Admin::UserDashboardsController < ApplicationController
   before_action :authenticate_admin!
-  
+
   layout 'admin'
   def index
       @users = User.all
   end
-  
+
 end
