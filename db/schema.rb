@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_08_12_113121) do
+ActiveRecord::Schema.define(version: 2024_08_12_141647) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -49,12 +49,22 @@ ActiveRecord::Schema.define(version: 2024_08_12_113121) do
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
+  create_table "book_genres", force: :cascade do |t|
+    t.integer "book_id", null: false
+    t.integer "genre_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_book_genres_on_book_id"
+    t.index ["genre_id"], name: "index_book_genres_on_genre_id"
+  end
+
   create_table "books", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "genre_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -74,4 +84,6 @@ ActiveRecord::Schema.define(version: 2024_08_12_113121) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "book_genres", "books"
+  add_foreign_key "book_genres", "genres"
 end

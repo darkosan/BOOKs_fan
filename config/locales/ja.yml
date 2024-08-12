@@ -5,6 +5,7 @@ ja:
         image: 画像
         title: タイトル(著者)
         body: 本文
+        genre_id: ジャンル
       user:
         email: メールアドレス
         password: パスワード
