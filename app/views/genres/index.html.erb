@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="my-4 text-center">ジャンル一覧</h1>
+      <%= link_to '新規投稿', new_genre_path, class: 'nav-link text-dark' %>
+      <% @genres.each do |genre| %>
+        <tr>
+          <td><%= genre.name %></td>
+          <td><%= link_to '編集', edit_genre_path(genre), class: 'btn btn-success' %></td>
+        </tr>
+      <% end %>
+    </div>
+  </div>
+</div>

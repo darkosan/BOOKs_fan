@@ -1,27 +1,27 @@
 Rails.application.routes.draw do
-  devise_for :admin, controllers: {
-    sessions: 'admin/sessions'
-  }
-
   root to: "homes#top"
+  get "homes/about" => "homes#about", as: "about"
+
+  devise_for :admins, controllers: {
+    sessions: "admins/sessions"
+  }
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations",
   }
 
-  namespace :admin do
-    get 'user_dashboards', to: 'user_dashboards#index'
-    resources :user_dashboards, only: [:destroy]
-
-    get 'book_dashboards', to: 'book_dashboards#index'
-    resources :book_dashboards, only: [:destroy]
+  devise_scope :user do
+    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
 
-  get 'users/:id/profile', to: 'users#show', as: 'user_profile'
-  get "homes/about" => "homes#about", as: "about"
+  namespace :admin do
+    resources :users, only: %i(index destroy)
+    resources :books, only: %i(index destroy)
+  end
 
-  resources :users, only: [:index, :show]
+  resources :users, only: %i(index show)
   resources :books
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :genres, only: %i(new create index edit update destroy)
+
 end

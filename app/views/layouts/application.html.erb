@@ -90,7 +90,10 @@
                 <a href="/homes/about"  class="text-dark-50">アプリケーション説明</a>
               </li>
               <li>
-                <a href="/admin/sign_in"  class="text-dark-50">管理者用</a>
+                <a href="/admins/sign_in"  class="text-dark-50">管理者用</a>
+              </li>
+              <li>
+                <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post %>
               </li>
             </ul>
           </div>

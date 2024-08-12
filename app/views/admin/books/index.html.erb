@@ -5,10 +5,10 @@
       <ul>
         <% @books.each do |book| %>
           <li>
-            <p class>タイトル(著者) : <%= book.title%></p>
+            <p>タイトル(著者) : <%= book.title%></p>
             <p class="text-justify">内容 : <%= book.body%></put>
             <p>投稿者：<%= book.user.name %> - <%= image_tag book.user.get_profile_image %></p>
-            <%= link_to '削除', admin_book_dashboards_path(book), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+            <%= link_to '削除', admin_book_path(book), method: :delete, data: { confirm: '本当に削除しますか？' } %>
           </li>
         <% end %>
       </ul>

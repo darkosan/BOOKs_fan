@@ -9,7 +9,7 @@
           <% end %>
           <p>タイトル(著者)：<%= book.title %></p>
           <p class="text-justify">内容：<%= simple_format(book.body) %></p>
-          <p>投稿者：<%= book.user.name %><%= image_tag book.user.get_profile_image %></p>
+          <p>投稿者：<%= book.user.name %> - <%= image_tag book.user.get_profile_image %></p>
           <p>投稿日：<%= book.created_at.strftime('%Y/%m/%d') %></p>
         </div>
       <% end %>

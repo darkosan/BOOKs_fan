@@ -4,7 +4,7 @@
       <h1 class="text-center">ログイン(管理者用)</h2>
       <div class="border border-primary">
         <%= form_with model: @admin, url: session_path(resource_name), local: true do |f| %>
-          <%= render "admin/shared/error_messages", model: f.object %>
+          <%= render "admins/shared/error_messages", model: f.object %>
 
           <div class="row">
             <div class="col-md">
@@ -18,13 +18,6 @@
                 <%= f.password_field :password, autocomplete: "current-password" %>
               </div>
 
-              <% if devise_mapping.rememberable? %>
-                <div class="field">
-                  <%= f.check_box :remember_me %>
-                  <%= f.label :remember_me %>
-                </div>
-              <% end %>
-
               <div class="my-3 text-center">
                 <div class="actions">
                   <%= f.submit "Log in" %>
@@ -33,7 +26,6 @@
             </div>
           </div>
         <% end %>
-        <%= render "admin/shared/links" %>
       </div>
     </div>
   </div>

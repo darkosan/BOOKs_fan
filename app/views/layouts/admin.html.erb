@@ -24,10 +24,10 @@
               <ul class="navbar-nav ml-auto">
                 <% if admin_signed_in? %>
      　            <li class="nav-item">
-                    <%= link_to '全BOOK一覧', admin_book_dashboards_path, class: 'nav-link text-dark' %>
+                    <%= link_to '全BOOK一覧', admin_books_path, class: 'nav-link text-dark' %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to '全User一覧', admin_user_dashboards_path, class: 'nav-link text-dark' %>
+                    <%= link_to '全User一覧', admin_users_path, class: 'nav-link text-dark' %>
                   </li>
                   <li class="nav-item">
                     <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
