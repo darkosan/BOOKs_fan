@@ -3,6 +3,7 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
+    @genres = Genre.all
   end
 
   def create
@@ -17,15 +18,18 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @genres = Genre.all
   end
 
   def show
     @book = Book.find(params[:id])
     @post_comment = PostComment.new
+    @genres = Genre.all
   end
 
   def edit
     @book = Book.find(params[:id])
+    @genres = Genre.all
   end
 
   def update
