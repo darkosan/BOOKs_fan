@@ -1,26 +1,25 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <h1 class="my-4 text-center">User 情報</h1>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <h1 class="my-4 text-center">User 情報</h1>
 
-      <div>
-        <h3><%= @user.name %></h3>
-        <%= image_tag @user.get_profile_image %>
-        <% if @user == current_user %>
-          <%= link_to "プロフィール編集", edit_user_registration_path %>
-        <% end %>
-      </div>
-
-      <% @books.each do |book| %>
-      <div class="row border border-primary-dark mb-5">
-        <%= link_to book_path(book.id) do %>
-          <%= image_tag book.get_image %>
-        <% end %>
-        <p>タイトル：<%= book.title %></p>
-        <p>内容：<%= book.body%></p>
-      </div>
+    <div>
+      <h3><%= @user.name %></h3>
+      <%= image_tag @user.get_profile_image %>
+      <% if @user == current_user %>
+        <%= link_to "プロフィール編集", edit_user_registration_path %>
       <% end %>
-
     </div>
+
+    <% @books.each do |book| %>
+    <div class="row border border-primary-dark mb-5">
+      <%= link_to book_path(book.id) do %>
+        <%= image_tag book.get_image %>
+      <% end %>
+      <p>タイトル：<%= book.title %></p>
+      <p>内容：<%= book.body%></p>
+      <p><%= link_to "#{book.post_comments.count} コメント", book_path(book.id) %></p>
+    </div>
+    <% end %>
+
   </div>
 </div>

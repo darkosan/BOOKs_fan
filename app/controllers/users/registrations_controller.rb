@@ -42,7 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def admin_controller?
-    self.class.module_parent_name == 'Admin'
+    self.class.module_parent_name == "Admin"
   end
 
   # If you have extra params to permit, append them to the sanitizer.

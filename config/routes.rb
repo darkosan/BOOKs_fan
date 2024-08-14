@@ -20,8 +20,12 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i(index show)
-  resources :books
+  resources :books do
+    resources :post_comments, only: %i(create destroy)
+  end
 
   resources :genres, only: %i(new create index edit update destroy)
+
+  get "search" => "searches#search"
 
 end

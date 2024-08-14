@@ -1,32 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <h1 class="text-center">ログイン(管理者用)</h2>
-      <div class="border border-primary">
-        <%= form_with model: @admin, url: session_path(resource_name), local: true do |f| %>
-          <%= render "admins/shared/error_messages", model: f.object %>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <h1 class="text-center">ログイン(管理者用)</h2>
+    <div class="border border-primary">
+      <%= form_with model: @admin, url: session_path(resource_name), local: true do |f| %>
+        <%= render "admins/shared/error_messages", model: f.object %>
 
-          <div class="row">
-            <div class="col-md">
-              <div class="field">
-                <%= f.label "メールアドレス" %><br />
-                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-              </div>
+        <div class="row">
+          <div class="col-md">
+            <div class="field">
+              <%= f.label "メールアドレス" %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
 
-              <div class="field">
-                <%= f.label "パスワード" %><br />
-                <%= f.password_field :password, autocomplete: "current-password" %>
-              </div>
+            <div class="field">
+              <%= f.label "パスワード" %><br />
+              <%= f.password_field :password, autocomplete: "current-password" %>
+            </div>
 
-              <div class="my-3 text-center">
-                <div class="actions">
-                  <%= f.submit "Log in" %>
-                </div>
+            <div class="my-3 text-center">
+              <div class="actions">
+                <%= f.submit "Log in" %>
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
