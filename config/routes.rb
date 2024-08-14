@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: %i(index destroy)
     resources :books, only: %i(index destroy)
+    resources :genres, only: %i(new create index edit update destroy)
   end
 
   resources :users, only: %i(index show)
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
     resources :post_comments, only: %i(create destroy)
   end
 
-  resources :genres, only: %i(new create index edit update destroy)
+  resources :genres, only: %i(index)
 
   get "search" => "searches#search"
 

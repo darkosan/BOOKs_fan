@@ -3,9 +3,7 @@
   <h3 class="my-4 text-center">ジャンル一覧</h3>
   <% genres.each do |genre| %>
     <p><%= genre.name %></p>
-    <p><%= link_to '編集', edit_genre_path(genre), class: 'btn btn-success' %></p>
   <% end %>
-  <%= link_to '新規投稿', new_genre_path, class: 'nav-link text-dark' %>
 </div>
 
 

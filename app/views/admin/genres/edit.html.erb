@@ -11,7 +11,7 @@
     <% end %>
     <%= render partial: "form", locals: { genre: @genre } %>
     <%= link_to "戻る", :back %>  |
-    <%= link_to "一覧", genres_path %>  |
-    <%= link_to "削除", genre_path, method: :delete %>
+    <%= link_to "一覧", admin_genres_path %>  |
+    <%= link_to "削除", admin_genre_path, method: :delete %>
   </div>
 </div>
