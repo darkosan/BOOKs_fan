@@ -7,12 +7,14 @@
         <%= link_to book_path(book.id) do %>
           <%= image_tag book.get_image %>
         <% end %>
-        <p class="p-2 bd-highlight">タイトル(著者)：<%= book.title %></p>
-        <p class="p-2 bd-highlight text-justify text-truncate"><%= simple_format(book.body) %></p>
-        <p class="p-2 bd-highlight">投稿者：<%= book.user.name %> - <%= image_tag book.user.get_profile_image %></p>
-        <p class="p-2 bd-highlight">ジャンル：<%= book.genre_id %></p>
-        <p class="p-2 bd-highlight">投稿日：<%= book.created_at.strftime('%Y/%m/%d') %></p>
-        <p class="p-2 bd-highlight"><%= link_to "#{book.post_comments.count} コメント", book_path(book.id) %></p>
+        <div class="col-12">
+          <p>タイトル(著者)：<%= book.title %></p>
+          <p class="text-justify">内容：<%= simple_format(book.body) %></p>
+          <p>投稿者：<%= book.user.name %> - <%= image_tag book.user.get_profile_image %></p>
+          <p>ジャンル：<%= book.genre_id %></p>
+          <p>投稿日：<%= book.created_at.strftime('%Y/%m/%d') %></p>
+          <p><%= link_to "#{book.post_comments.count} コメント", book_path(book.id) %></p>
+        </div>
       </div>
     <% end %>
   </div>
