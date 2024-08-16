@@ -1,15 +1,24 @@
 <div class="row">
-  <div class="col-md-8 offset-md-2">
+  <%= render partial: "layouts/search_and_genre", locals: { genres: @genres } %>
+  <div class="col-md-7 offset-md-1">
     <h1 class="my-4 text-center">全BOOK一覧</h1>
-    <ul>
-      <% @books.each do |book| %>
-        <li>
-          <p>タイトル(著者) : <%= book.title%></p>
-          <p class="text-justify">内容 : <%= book.body%></put>
-          <p>投稿者：<%= book.user.name %> - <%= image_tag book.user.get_profile_image %></p>
+    <% @books.each do |book| %>
+      <div class="row border border-primary-dark mb-5">
+        <%= image_tag book.get_image %>
+        <div class="col-12">
+          <p>タイトル(著者)：<%= book.title%></p>
+          <p class="text-justify">内容：<%= simple_format(book.body) %></p>
+          <p>投稿者：<%= book.user.name %>
+            <%= link_to book_path(book.id) do %>
+              <%= image_tag book.user.get_profile_image %>
+            <% end %>
+          </p>
+          <p>投稿日：<%= book.created_at.strftime('%Y/%m/%d') %></p>
+          <p>ジャンル：<%= book.genre_id %></p>
+          <p><%= link_to "#{book.post_comments.count} コメント", book_path(book.id) %></p>
           <%= link_to '削除', admin_book_path(book), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-        </li>
-      <% end %>
-    </ul>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

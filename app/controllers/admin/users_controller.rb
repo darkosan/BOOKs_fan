@@ -1,6 +1,7 @@
 class Admin::UsersController < AdminController
   def index
     @users = User.all
+    @genres = Genre.all
   end
 
   def destroy

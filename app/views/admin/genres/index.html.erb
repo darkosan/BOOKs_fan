@@ -2,9 +2,8 @@
   <div class="col-md-8 offset-md-2">
     <h1 class="my-4 text-center">ジャンル一覧</h1>
     <% @genres.each do |genre| %>
-      <p><%= genre.name %></p>
-      <p><%= link_to '編集', edit_admin_genre_path(genre), class: 'btn btn-success' %></p>
+      <p><%= genre.name %><%= link_to '編集', edit_admin_genre_path(genre), class: "btn btn-success" %></p>
     <% end %>
-    <%= link_to '新規投稿', new_admin_genre_path, class: 'nav-link text-dark' %>
+    <%= link_to '新規投稿', new_admin_genre_path, class: "btn btn-success" %>
   </div>
 </div>

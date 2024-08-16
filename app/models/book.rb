@@ -4,9 +4,11 @@ class Book < ApplicationRecord
   belongs_to :genre
   has_one_attached :image
   has_many :post_comments, dependent: :destroy
-  
+
   validates :title, presence: true
   validates :body, presence: true
+  validates :genre, presence: true
+
 
   def get_image
     unless image.attached?
@@ -28,6 +30,10 @@ class Book < ApplicationRecord
     else
       @book = Book.all
     end
+  end
+
+  def genre_name
+    genre.name if genre.present?
   end
 
 end
