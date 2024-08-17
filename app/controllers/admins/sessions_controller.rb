@@ -4,14 +4,23 @@ class Admins::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   layout "admin"
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def new
+    @admin = Admin.new
+  end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    email = params[:admin][:email]
+    password = params[:admin][:password]
+    @admin = Admin.new(email: email)
+    if @admin && @admin.valid_password?(password)
+      sign_in(admin)
+      redirect_to admin_users_path
+    else
+      flash.now[:alert] = "ログインに失敗しました"
+      render 'admins/sessions/new'
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy

@@ -4,6 +4,7 @@ class Book < ApplicationRecord
   belongs_to :genre
   has_one_attached :image
   has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true
@@ -34,6 +35,10 @@ class Book < ApplicationRecord
 
   def genre_name
     genre.name if genre.present?
+  end
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 
 end

@@ -5,7 +5,7 @@ ja:
         image: 画像
         title: タイトル(著者)
         body: 本文
-        genre_id: ジャンル
+        genre: ジャンル
       user:
         email: メールアドレス
         password: パスワード
@@ -19,6 +19,8 @@ ja:
               blank: "が空白です"
             body:
               blank: "が空白です"
+            genre:
+              blank: "が空白です"
         user:
           attributes:
             email:
@@ -27,3 +29,5 @@ ja:
               blank: "が空白です"
             password:
               blank: "が空白です"
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"
