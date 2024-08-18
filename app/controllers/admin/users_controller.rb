@@ -1,5 +1,4 @@
-class Admin::UsersController < ApplicationController
-  layout "admin"
+class Admin::UsersController < AdminController
   def index
     @users = User.all
     @genres = Genre.all

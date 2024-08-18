@@ -1,6 +1,4 @@
-class Admin::BooksController < ApplicationController
-  layout "admin"
-  
+class Admin::BooksController < AdminController
   def index
     @books = Book.all
     @genres = Genre.all

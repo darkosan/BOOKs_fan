@@ -5,7 +5,7 @@
 
     <% @users.each do |user| %>
       <div>
-        <%= link_to user_path(user.id) do %>
+        <%= link_to user_path(user) do %>
           <%= image_tag user.get_profile_image %>
         <% end %>
         <p>投稿者：<%= user.name %></p>
