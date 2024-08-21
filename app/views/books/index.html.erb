@@ -1,23 +1,7 @@
 <div class="row">
-  <%= render partial: "layouts/search_and_genre", locals: { genres: @genres } %>
+  <%= render partial: "layouts/search_genre", locals: { genres: @genres } %>
   <div class="col-md-7 offset-md-1">
     <h1 class="my-4 text-center">BOOK 一覧</h1>
-    <% @books.each do |book| %>
-      <div class="row border border-primary-dark mb-5">
-        <%= link_to book_path(book.id) do %>
-          <%= image_tag book.get_image %>
-        <% end %>
-        <div class="col-12">
-          <p>タイトル(著者)：<%= book.title %></p>
-          <p class="text-justify">内容：<%= simple_format(book.body) %></p>
-          <p>投稿者：<%= book.user.name %> - <%= image_tag book.user.get_profile_image %></p>
-          <p>ジャンル：<%= book.genre_name %></p>
-          <p>投稿日：<%= book.created_at.strftime('%Y/%m/%d') %></p>
-          <%= render "static_rate", book: book %>
-          <p><%= link_to "#{book.post_comments.count} コメント", book_path(book.id) %></p>
-          <p><%= link_to "#{book.favorites.count} いいね", book_path(book.id) %></p>
-        </div>
-      </div>
-    <% end %>
+    <%= render partial: "books/book", locals: { books: @books } %>
   </div>
 </div>

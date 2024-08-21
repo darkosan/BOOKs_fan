@@ -1,5 +1,5 @@
 <div class="row">
-  <%= render partial: "layouts/search_and_genre", locals: { genres: @genres } %>
+  <%= render partial: "genres/genre", locals: { genres: @genres } %>
   <div class="col-md-7 offset-md-1">
     <h1 class="my-3 text-center">BOOK 編集</h1>
     <% if @book.errors.any? %>

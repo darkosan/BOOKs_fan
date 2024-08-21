@@ -1,0 +1,7 @@
+<div class="row">
+  <%= render partial: "genres/genre", locals: { genres: @genres } %>
+  <div class="col-md-7 offset-md-1">
+    <h1 class="my-4 text-center"><%= @genre.name %>の投稿一覧</h1>
+    <%= render partial: "books/book", locals: { books: @books } %>
+  </div>
+</div>

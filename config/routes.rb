@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
   resources :genres, only: %i(index)
 
+  get '/genres/:genre_books', to: 'genre_books#index', as: 'genre_books'
+
   get "search" => "searches#search"
 
 end
