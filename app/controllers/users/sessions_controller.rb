@@ -5,11 +5,8 @@ class Users::SessionsController < Devise::SessionsController
 
   def guest_sign_in
     user = User.guest
-    if sign_in user
-      redirect_to user_path(user), notice: "guestuserでログインしました"
-    else
-      render :new
-    end
+    sign_in user
+    redirect_to user_path(user), notice: "guestuserでログインしました。"
   end
   # GET /resource/sign_in
   # def new
