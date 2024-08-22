@@ -1,16 +1,22 @@
 <div class="row">
-  <%= render partial: "layouts/search_and_genre", locals: { genres: @genres } %>
+  <%= render partial: "layouts/search_genre", locals: { genres: @genres } %>
   <div class="col-md-7 offset-md-1">
     <h1 class="my-4 text-center">User 一覧</h1>
-
-    <% @users.each do |user| %>
-      <div>
-        <%= link_to user_path(user) do %>
-          <%= image_tag user.get_profile_image %>
-        <% end %>
-        <p>投稿者：<%= user.name %></p>
-      </div>
-    <% end %>
-
+    <table>
+      <tr>
+        <th>User名</th>
+        <th>User写真</th>
+      </tr>
+      <% @users.each do |user| %>
+        <tr>
+          <th><%= user.name %></th>
+          <th>
+            <%= link_to user_path(user) do %>
+              <%= image_tag user.get_profile_image %>
+            <% end %>
+          </th>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>

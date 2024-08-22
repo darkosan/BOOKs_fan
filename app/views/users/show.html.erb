@@ -1,26 +1,16 @@
 <div class="row">
-  <%= render partial: "layouts/search_and_genre", locals: { genres: @genres } %>
+  <%= render partial: "layouts/search_genre", locals: { genres: @genres } %>
   <div class="col-md-7 offset-md-1">
     <h1 class="my-4 text-center">User 情報</h1>
 
     <div>
-      <h3><%= @user.name %></h3>
-      <%= image_tag @user.get_profile_image %>
-      <% if @user == current_user %>
-        <%= link_to "プロフィール編集", edit_user_registration_path %>
-      <% end %>
+      <h3><%= @user.name %>
+        <%= image_tag @user.get_profile_image %>
+        <% if @user == current_user %>
+          <%= link_to "プロフィール編集", edit_user_registration_path %>
+        <% end %>
+      </h3>
     </div>
-
-    <% @books.each do |book| %>
-    <div class="row border border-primary-dark mb-5">
-      <%= link_to book_path(book.id) do %>
-        <%= image_tag book.get_image %>
-      <% end %>
-      <p>タイトル：<%= book.title %></p>
-      <p>内容：<%= book.body%></p>
-      <p><%= link_to "#{book.post_comments.count} コメント", book_path(book.id) %></p>
-    </div>
-    <% end %>
-
+    <%= render partial: "books/book", locals: { books: @books } %>
   </div>
 </div>

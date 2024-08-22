@@ -1,16 +1,14 @@
 <div class="col-md-3 my-5">
-  <% if user_signed_in? %>
-    <div class="search_form">
-      <%= form_with url: search_path, local: true, method: :get do |f| %>
-        <%= f.text_field :word %>
-        <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-        <%= f.submit "検索", class: "btn btn-primary" %>
-      <% end %>
-    </div>
-  <% end %>
+  <div class="search_form">
+    <%= form_with url: search_path, local: true, method: :get do |f| %>
+      <%= f.text_field :word %>
+      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+      <%= f.submit "検索", class: "btn btn-primary" %>
+    <% end %>
+  </div>
   <h3 class="my-4 text-center">ジャンル一覧</h3>
   <% genres.each do |genre| %>
-    <%= link_to genre.name, genre_books_path(genre_books: genre.id) %>
+    <%= link_to genre.name, genre_books_path(genre_books: genre.id) %><br/>
   <% end %>
 </div>
 

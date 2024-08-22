@@ -17,12 +17,13 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    @books = Book.page(params[:page])
     @genres = Genre.all
   end
 
   def show
     @book = Book.find(params[:id])
+    @books = Book.page(params[:page])
     @post_comment = PostComment.new
     @genres = Genre.all
   end

@@ -1,4 +1,5 @@
 class GenreBooksController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @genre = Genre.find_by(params[:genre_id])

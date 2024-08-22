@@ -4,4 +4,5 @@
     <h1 class="my-4 text-center">BOOK 一覧</h1>
     <%= render partial: "books/book", locals: { books: @books } %>
   </div>
+  <%= paginate @books %>
 </div>
