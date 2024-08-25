@@ -2,7 +2,7 @@ class GenreBooksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @genre = Genre.find_by(params[:genre_id])
+    @genre = Genre.find(params[:genre_id])
     @genres = Genre.all
     @books = Book.where(genre_id: @genre.id)
   end

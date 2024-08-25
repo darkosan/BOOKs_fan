@@ -8,7 +8,7 @@
   </div>
   <h3 class="my-4 text-center">ジャンル一覧</h3>
   <% genres.each do |genre| %>
-    <%= link_to genre.name, genre_books_path(genre_books: genre.id) %><br/>
+    <%= link_to genre.name, genre_genre_books_path(genre_id: genre.id) %><br/>
   <% end %>
 </div>
 

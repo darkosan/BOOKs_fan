@@ -16,7 +16,11 @@
     <header class="shadow-sm" style="background-color:#2ba195;">
       <nav class="navbar nabbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand" herf="/"><%= image_tag('logo.png') %></a>
+          <% if user_signed_in? %>
+            <a class="navbar-brand" href="/"><%= link_to image_tag('logo.png'),books_path %></a>
+          <% else %>
+            <a class="navbar-brand" href="/"><%= link_to image_tag('logo.png'),root_path %></a>
+          <% end %>
           <h1 class="display-3">BOOKs_fan</h1>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
