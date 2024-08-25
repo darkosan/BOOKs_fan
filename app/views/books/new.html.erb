@@ -1,6 +1,5 @@
 <div class="row">
-  <%= render partial: "layouts/search_genre", locals: { genres: @genres } %>
-  <div class="col-md-7 offset-md-1">
+  <div class="col-md-8 offset-md-2">
     <h1 class="my-3 text-center">新規投稿</h1>
     <% if @book.errors.any? %>
       <%= @book.errors.count %>件のエラーが発生しました

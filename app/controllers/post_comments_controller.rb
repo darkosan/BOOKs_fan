@@ -1,12 +1,16 @@
 class PostCommentsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def create
     book = Book.find(params[:book_id])
     comment = current_user.post_comments.new(post_comment_params)
     comment.book_id = book.id
-    comment.save
-    redirect_to book_path(book)
+    if comment.save
+      flash[:notice] = "コメントに成功しました。"
+      redirect_to book_path(book)
+    else
+      flash.now[:alert] = "コメントに失敗しました。"
+    end
   end
 
   def destroy
@@ -20,5 +24,5 @@ class PostCommentsController < ApplicationController
     params.require(:post_comment).permit(:comment)
   end
 
-  
+
 end

@@ -11,7 +11,8 @@ class Admin::GenresController < AdminController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to genres_path, notice: "ジャンルを登録しました"
+      flash[:notice] = "ジャンルを登録しました"
+      redirect_to genres_path
     else
       redirect_to genres_path, alert: "ジャンルの登録に失敗しました"
     end
