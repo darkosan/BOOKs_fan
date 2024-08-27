@@ -26,20 +26,20 @@
       $(document).on('turbolinks:load', function() {
         let elem = document.querySelector('#post_raty');
         if (elem == null) return;
-
+  
         elem.innerHTML = ""
-        let opt = {
+        let opt = {  
           starOn: "<%= asset_path('star-on.png') %>",
           starOff: "<%= asset_path('star-off.png') %>",
           starHalf: "<%= asset_path('star-half.png') %>",
-          scoreName: '<%= book.star %>',
+          scoreName: 'book[star]',
         };
         raty(elem, opt);
       });
     </script>
   <% else %>
     <div class="form-group">
-      <%= render "books/static_rate", book: book %>
+      <%= render "static_rate", book: book %>
     </div>
   <% end %>
 
