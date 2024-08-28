@@ -19,8 +19,18 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.page(params[:page])
+    @books = Book.all.page(params[:page])
     @genres = Genre.all
+    if params[:genre_id].present?
+      @genre = Genre.find_by(id: params[:genre_id])
+      if @genre.present?
+        @books = @books.where(genre_id: @genre.id)
+      end
+    end
+
+    if params[:word].present? && params[:search].present?
+      @books = Book.looks(params[:search], params[:word]).page(params[:page])
+    end
   end
 
   def show

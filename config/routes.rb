@@ -26,10 +26,6 @@ Rails.application.routes.draw do
     resource :favorite, only: %i(create destroy)
   end
 
-  resources :genres, only: %i(index) do
-    resources :genre_books, only: %i(index)
-  end
-
   get "search" => "searches#search"
 
 end
