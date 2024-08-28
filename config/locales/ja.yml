@@ -229,9 +229,17 @@ ja:
     updated: 更新しました！
     failed: 失敗しました！
     destroy: 削除しました！
-    login: ログインしました！
-    logout: ログアウトしました！
+    signed_in: ログインしました！
+    signed_out: ログアウトしました！
     limited_access: 不正な侵入です！！
     tag_follow: タグをフォローしました！
     tag_not_follow: タグをフォローできませんでした。
     tag_remove_follow: タグのフォローを解除しました！
+
+  devise:
+    sessions:
+      user:
+        signed_in: ログインしました！
+        signed_out: ログアウトしました！
+
+
