@@ -174,7 +174,6 @@ ja:
     tag_follow: タグをフォローしました！
     tag_not_follow: タグをフォローできませんでした。
     tag_remove_follow: タグのフォローを解除しました！
-
   devise:
     registrations:
       user:
@@ -187,5 +186,10 @@ ja:
       admin:
         signed_in: ログインしました！
         signed_out: ログアウトしました！
-
-
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."

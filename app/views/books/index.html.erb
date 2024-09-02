@@ -9,6 +9,6 @@
       <% end %>
     </h1>
     <%= render partial: "books/book", locals: { books: @books } %>
+    <%= paginate @books %>
   </div>
-  <%= paginate @books %>
 </div>
