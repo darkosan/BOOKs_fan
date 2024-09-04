@@ -1,15 +1,30 @@
 class Book < ApplicationRecord
-
   belongs_to :user
   belongs_to :genre
-  has_one_attached :image
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+
+  has_one_attached :image
 
   validates :title, presence: true
   validates :body, presence: true
   validates :genre, presence: true
 
+  scope :search_by_title, -> (search, title) do
+    sanitezed_title = sanitize_sql_like(title)
+    case search
+    when "perfect_match"
+      where("title LIKE ?", "#{sanitezed_title}")
+    when "forward_match"
+      where("title LIKE ?", "#{sanitezed_title}%")
+    when "backward_match"
+      where("title LIKE ?", "%#{sanitezed_title}")
+    when "partial_match"
+      where("title LIKE ?", "%#{sanitezed_title}%")
+    else
+      all
+    end
+  end
 
   def get_image
     unless image.attached?
@@ -19,20 +34,6 @@ class Book < ApplicationRecord
     image.variant(resize_to_limit: [300, 300]).processed
   end
 
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @book = Book.where("title LIKE?","#{word}")
-    elsif search == "forward_match"
-      @book = Book.where("title LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @book = Book.where("title LIKE?","%#{word}")
-    elsif search == "partial_match"
-      @book = Book.where("title LIKE?","%#{word}%")
-    else
-      @book = Book.all
-    end
-  end
-
   def genre_name
     genre.name if genre.present?
   end
@@ -40,5 +41,4 @@ class Book < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
-
 end

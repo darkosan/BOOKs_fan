@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!, only: %i(new create edit update destroy)
+  before_action :authenticate_user!
 
   def new
     @book = Book.new
@@ -7,12 +7,12 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
+    @book = current_user.books.new(book_params)
     if @book.save
       flash[:notice] = "投稿に成功しました。"
-      redirect_to book_path(@book.id)
+      redirect_to book_path(@book)
     else
+      @genres = Genre.all
       flash.now[:alert] = "投稿に失敗しました。"
       render :new
     end
@@ -29,7 +29,7 @@ class BooksController < ApplicationController
     end
 
     if params[:word].present? && params[:search].present?
-      @books = Book.looks(params[:search], params[:word]).page(params[:page])
+      @books = @books.search_by_title(params[:search], params[:word])
     end
   end
 
@@ -50,6 +50,7 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       redirect_to books_path
     else
+      @genres = Genre.all
       render :edit
     end
   end

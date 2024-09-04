@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "homes/about" => "homes#about", as: "about"
 
-  devise_for :admins, controllers: {
-    sessions: "admins/sessions"
+  devise_for :admins, skip: %i(registrations), controllers: {
+    sessions: "admins/sessions",
   }
+
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations",
@@ -25,7 +26,4 @@ Rails.application.routes.draw do
     resources :post_comments, only: %i(create destroy)
     resource :favorite, only: %i(create destroy)
   end
-
-  get "search" => "searches#search"
-
 end
