@@ -1,6 +1,6 @@
 class Admin::GenresController < AdminController
   def new
-   @genre = Genre.new
+    @genre = Genre.new
   end
 
   def index
@@ -11,10 +11,9 @@ class Admin::GenresController < AdminController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      flash[:notice] = "ジャンルを登録しました"
-      redirect_to admin_genres_path
+      redirect_to admin_genres_path, notice:  "ジャンルを登録しました"
     else
-      redirect_to admin_genres_path, alert: "ジャンルの登録に失敗しました"
+      render :new
     end
   end
 
@@ -27,7 +26,7 @@ class Admin::GenresController < AdminController
     if @genre.update(genre_params)
       redirect_to admin_genres_path, notice: "ジャンルを更新しました"
     else
-      redirect_to admin_genres_path, alert: "ジャンルの登録に失敗しました"
+      render :edit
     end
   end
 

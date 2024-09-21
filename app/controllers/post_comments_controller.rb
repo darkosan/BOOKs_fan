@@ -6,8 +6,7 @@ class PostCommentsController < ApplicationController
     comment = current_user.post_comments.new(post_comment_params)
     comment.book_id = book.id
     if comment.save
-      flash[:notice] = "コメントに成功しました。"
-      redirect_to book_path(book)
+      redirect_to book_path(book), notice:  "コメントに成功しました。"
     else
       flash.now[:alert] = "コメントに失敗しました。"
     end

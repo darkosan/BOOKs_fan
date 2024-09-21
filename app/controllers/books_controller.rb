@@ -9,8 +9,7 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.new(book_params)
     if @book.save
-      flash[:notice] = "投稿に成功しました。"
-      redirect_to book_path(@book.id)
+      redirect_to book_path(@book.id), notice: "投稿に成功しました。"
     else
       @genres = Genre.all
       flash.now[:alert] = "投稿に失敗しました。"
