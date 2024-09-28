@@ -1,0 +1,4 @@
+DB_USERNAME="root"
+DB_PASSWORD="darko0607"
+DB_HOST="rds-mysql-server.chq6y8kesepf.ap-northeast-1.rds.amazonaws.com"
+DB_DATABASE="BOOKs_fan"
