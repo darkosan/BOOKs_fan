@@ -2,7 +2,19 @@
   <%= render partial: "genres/search_genre", locals: { genres: @genres } %>
   <div class="col-md-7 offset-md-1">
     <h1 class="my-4 text-center">全BOOK一覧</h1>
-    <%= render partial: "books/book", locals: { books: @books } %>
+      <% @books.each do |book| %>
+        <div class="row border border-primary-dark mb-5 col-12">
+          <p>タイトル(著者)：<%= book.title %></p>
+          <p class="text-justify">内容：<%= simple_format(book.body) %></p>
+          <p>投稿者：<%= book.user.name %> - <%= image_tag book.user.get_profile_image %></p>
+          <p>ジャンル：<%= book.genre_name %></p>
+          <p>投稿日：<%= book.created_at.strftime('%Y/%m/%d') %></p>
+          <%= render "books/static_rate", book: book %>
+          <p><%= link_to "#{book.post_comments.count} コメント", book_path(book.id) %></p>
+          <p><%= link_to "#{book.favorites.count} いいね", book_path(book.id) %></p>
+          <%= link_to '削除', admin_book_path(book), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+        </div>
+      <% end %>
     <%= paginate @books %>
   </div>
 </div>
