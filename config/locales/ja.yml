@@ -10,6 +10,7 @@ ja:
         email: メールアドレス
         password: パスワード
         current_password: 現在のパスワード
+        Password_confirmation: "パスワード確認"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -55,7 +56,7 @@ ja:
     messages:
       accepted: を受諾してください
       blank: を入力してください
-      confirmation: と%{attribute}の入力が一致しません
+      confirmation: 現在入力と%{attribute}の入力が一致しません
       empty: を入力してください
       equal_to: は%{count}にしてください
       even: は偶数にしてください
