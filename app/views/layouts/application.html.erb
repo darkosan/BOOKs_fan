@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
     <title>BOOKsFan</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -15,18 +16,14 @@
     <header class="shadow-sm" style="background-color:#2ba195;">
       <nav class="navbar nabbar-expand-lg navbar-light">
         <div class="container">
-          <% if user_signed_in? %>
-            <a class="navbar-brand" href="/"><%= link_to image_tag('logo.png'),books_path %></a>
-          <% else %>
-            <a class="navbar-brand" href="/"><%= link_to image_tag('logo.png'),root_path %></a>
-          <% end %>
+          <%= link_to image_tag('logo.png'), user_signed_in? ? books_path : root_path, class: "navbar-brand" %>
           <h1 class="display-3">BOOKs_fan</h1>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav ml-auto">
-              <% if user_signed_in? %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
               <li class="nav-item">
                 <%= link_to 'Book 一覧', books_path, class: 'nav-link text-dark' %>
               </li>
@@ -42,7 +39,7 @@
               <li class="nav-item">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
               </li>
-              <% else %>
+            <% else %>
               <li class="nav-item">
                 <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
               </li>
@@ -52,8 +49,8 @@
               <li class="nav-item">
                 <%= link_to "アプリケーション 説明", about_path, class: 'nav-link text-dark' %>
               </li>
-              <% end %>
-            </div>
+            <% end %>
+          </div>
         </div>
       </nav>
     </header>
